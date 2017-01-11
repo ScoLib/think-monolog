@@ -2,6 +2,8 @@
 
 namespace Sco\Think;
 
+use Elastica\Client;
+use Monolog\Handler\ElasticSearchHandler;
 use Monolog\Handler\HandlerInterface;
 use Monolog\Logger as Mlogger;
 
@@ -60,11 +62,8 @@ class Logger
 
             self::$logger = new Mlogger('Monolog');
 
-            $handler = new StreamHandler(C('LOG_PATH') . date('y_m_d') . '.log',
-                Logger::DEBUG);
-            $handler->getFormatter()->allowInlineLineBreaks();
-            $handler->getFormatter()->ignoreEmptyContextAndExtra();
-            self::$logger->pushProcessor(new WebProcessor());
+            $client = new Client();
+            $handler = new ElasticSearchHandler($client);
             self::$logger->pushHandler($handler); // 文件
         }
     }
