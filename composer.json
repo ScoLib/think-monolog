@@ -1,0 +1,20 @@
+{
+    "name": "scolib/think-monolog",
+    "license": "Apache2.0",
+    "authors": [
+        {
+            "name": "klgd",
+            "email": "slice1213@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "ruflin/elastica": "^3.2",
+        "monolog/monolog": "^1.22"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sco\\Think\\": "src/"
+        }
+    }
+}
